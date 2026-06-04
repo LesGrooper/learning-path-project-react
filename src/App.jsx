@@ -6,7 +6,7 @@ import './App.css'
 import { ButtonCounter, GlobalListing } from './components'
 
 function App() {
-
+  const [val, setVal] = useState('');
   const [total, setTotal] = useState(0);
   const [isDisabled, setDisabled] = useState(false);
   const handleStep = (step) => {
@@ -24,7 +24,6 @@ function App() {
   }
   return (
     <>
-      <GlobalListing />
       <section id="center">
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
@@ -127,7 +126,10 @@ function App() {
       </section>
 
       <div className="ticks"></div>
-      <section id="spacer"></section>
+      <section id="spacer">
+        <GlobalListing />
+      </section>
+      <input value={val} onChange={e => setVal(e.target.value)} />
     </>
   )
 }
