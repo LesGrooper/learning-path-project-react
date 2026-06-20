@@ -1,14 +1,24 @@
+import { useEffect } from 'react';
+import { useBooks } from '../../hooks';
 import { BooksWrapper } from './Books.styled';
 import { Link, Outlet } from 'react-router-dom';
 
-const Books = ({ books = [{ id: 1, title: 'A' }] }) => {
+const Books = () => {
+   const { books = [], total, isLoading, fetchBooks } = useBooks();
+
+   useEffect(() => {
+      fetchBooks();
+   }, [fetchBooks]);
+
    return (
       <>
          <h2>Books</h2>
          <ul>
-            {books.map(b => (
-               <li key={b.id}><Link to={`${b.id}`}>{b.title}</Link></li>
-            ))}
+            {
+               !isLoading ? books.map(b => (
+                  <li key={b.id}><Link to={`${b.id}`}>{b.title}</Link>{b.author}</li>
+               )) : "loading data.."
+            }
          </ul>
          <Outlet />
       </>

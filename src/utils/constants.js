@@ -1,4 +1,5 @@
 export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+export const BOOK_API_BASE_URL = import.meta.env.VITE_BOOK_API_BASE_URL;
 
 export const ROUTES = {
   LOGIN: '/login',
@@ -13,4 +14,8 @@ export const STORAGE_KEYS = {
 
 export const PRODUCT_LIMITS = {
   PAGE_SIZE: 10,
+};
+
+export const STORAGE_KEYS_BOOK = {
+  TOKEN: 'auth_token_book',
 };
